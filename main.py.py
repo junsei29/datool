@@ -246,3 +246,14 @@ if __name__ == "__main__":
     root = Tk()
     app = CSVTool(root)
     root.mainloop()
+
+import os
+
+# 環境変数の取得
+api_key = os.getenv("API_KEY")
+db_url = os.getenv("DATABASE_URL")
+secret_key = os.getenv("SECRET_KEY")
+
+print(f"API Key: {api_key}")
+print(f"Database URL: {db_url}")
+print(f"Secret Key: {secret_key}")
