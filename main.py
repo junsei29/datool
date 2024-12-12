@@ -1,7 +1,8 @@
 import os
-from sqlalchemy import create_engine
-import pandas as pd
 import sys
+import pandas as pd
+from sqlalchemy import create_engine
+from flask import Flask
 
 # 環境変数からデータベース接続文字列を取得
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -118,6 +119,17 @@ if __name__ == "__main__":
         except Exception as e:
             print("GUIモードの初期化に失敗しました:", e)
 
+
+# ダミーWebサービスを作成
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Service is running!"
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))  # Renderが提供するポートを取得
+    app.run(host="0.0.0.0", port=port)
 
 
 #  import os
